@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Spawner
+  - Node
   layers:
   - Default
   - TransparentFX
@@ -15,9 +16,9 @@ TagManager:
   - 
   - 
   - Background
-  - 
-  - 
-  - 
+  - NodeBack
+  - NodeMid
+  - NodeFront
   - 
   - 
   - 
@@ -42,6 +43,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Nodes
+  - name: NodeFront
     uniqueID: 542927001
+    locked: 0
+  - name: NodeMid
+    uniqueID: 934206077
+    locked: 0
+  - name: NodeBack
+    uniqueID: 3705471683
     locked: 0

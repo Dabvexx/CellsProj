@@ -60,7 +60,7 @@ public class LineManager : MonoBehaviour
     }
 
     // Update the line's position to follow the nodes
-    protected void UpdateLines()
+    protected void UpdateLines(float maxalpha)
     {
         foreach (var connection in connections)
         {
@@ -73,7 +73,7 @@ public class LineManager : MonoBehaviour
 
             // Fade the line programatically by Lerping between 0 and 1 with the distance between the nodes and multiplying by a value.
             // This value will be applied to the alpha (brightness), thus dimming or brightening the line
-            var alpha = Mathf.Lerp(1f, 0f, GetNeighborDistance(node) * fadeScale);
+            var alpha = Mathf.Lerp(maxalpha, .1f, GetNeighborDistance(node) * fadeScale);
 
             // Creating a new gradient.
             Gradient lrGradient = new Gradient();

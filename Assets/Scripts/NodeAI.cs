@@ -21,12 +21,18 @@ public class NodeAI : LineManager
     [SerializeField]
     [Range(.001f, .01f)]
     private float maxSpeed = .005f;
+
+    private SpriteRenderer sr;
+
+    private Color nodeColor;
     #endregion
 
     #region Unity Methods
 
     private void Awake()
     {
+        sr = GetComponent<SpriteRenderer>();
+        nodeColor = sr.color;
         RandomizeVelocityX();
         RandomizeVelocityY();
     }
@@ -34,7 +40,11 @@ public class NodeAI : LineManager
     void Update()
     {
         MoveNode();
-        UpdateLines();
+    }
+
+    private void LateUpdate()
+    {
+        UpdateLines(nodeColor.a);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
