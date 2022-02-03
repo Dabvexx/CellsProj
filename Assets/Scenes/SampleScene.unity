@@ -314,16 +314,16 @@ MonoBehaviour:
   constrainSpawnAreaY: 1
   initialNodeAmtFront: 100
   nodesFront: []
-  frontNodeScale: 0.8
-  frontNodeAlpha: 1
-  initialNodeAmtMid: 100
+  nodeScaleFront: 0.5
+  nodeAlphaFront: 1
+  initialNodeAmtMid: 0
   nodesMid: []
-  midNodeScale: 0.65
-  midNodeAlpha: 0.5
-  initialNodeAmtBack: 100
+  nodeScaleMid: 0.5
+  nodeAlphaMid: 1
+  initialNodeAmtBack: 0
   nodesBack: []
-  backNodeScale: 0.5
-  backNodeAlpha: 0.12
+  nodeScaleBack: 0.5
+  nodeAlphaBack: 1
 --- !u!4 &776999345
 Transform:
   m_ObjectHideFlags: 0
