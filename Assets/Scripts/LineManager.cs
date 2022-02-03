@@ -60,20 +60,19 @@ public class LineManager : MonoBehaviour
     }
 
     // Update the line's position to follow the nodes
-    protected void UpdateLines(float maxalpha)
+    protected void UpdateLines(float maxAlpha)
     {
         foreach (var connection in connections)
         {
             // Get the line renderer component of the object
-            var lr = connection.Value.gameObject
-                .GetComponent<LineRenderer>();
+            var lr = connection.Value.gameObject.GetComponent<LineRenderer>();
 
             // Get the node this node is connected to
             var node = connection.Key.gameObject;
 
             // Fade the line programatically by Lerping between 0 and 1 with the distance between the nodes and multiplying by a value.
             // This value will be applied to the alpha (brightness), thus dimming or brightening the line
-            var alpha = Mathf.Lerp(maxalpha, .1f, GetNeighborDistance(node) * fadeScale);
+            var alpha = Mathf.Lerp(maxAlpha, .1f, GetNeighborDistance(node) * fadeScale);
 
             // Creating a new gradient.
             Gradient lrGradient = new Gradient();

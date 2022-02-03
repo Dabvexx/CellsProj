@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class NodeSpawner : MonoBehaviour
+public class NodeManager : MonoBehaviour
 {
 
     #region Variables
@@ -29,7 +29,7 @@ public class NodeSpawner : MonoBehaviour
     [Header("Foreground Nodes Variables")]
 
     // Initial node amount spawned.
-    [Range(1, 250)]
+    [Range(0, 250)]
     public int initialNodeAmtFront = 100;
 
     // List of all gameobjects in scene in mid layer.
@@ -37,11 +37,11 @@ public class NodeSpawner : MonoBehaviour
 
     // The Scale Of the nodes
     [Range(0, 2f)]
-    public float  frontNodeScale = .5f;
+    public float  nodeScaleFront = .5f;
 
     // Control the transparency of nodes.
     [Range(0, 1f)]
-    public float frontNodeAlpha = 1f;
+    public float nodeAlphaFront = 1f;
 
     #endregion Foreground Nodes
 
@@ -51,7 +51,7 @@ public class NodeSpawner : MonoBehaviour
     [Header("Midground Nodes Variables")]
 
     // Initial node amount spawned.
-    [Range(1, 250)]
+    [Range(0, 250)]
     public int initialNodeAmtMid = 100;
 
     // List of all gameobjects in scene in front layer.
@@ -59,11 +59,11 @@ public class NodeSpawner : MonoBehaviour
 
     // The Scale Of the nodes
     [Range(0, 2f)]
-    public float midNodeScale = .5f;
+    public float nodeScaleMid = .5f;
 
     // Control the transparency of nodes.
     [Range(0, 1f)]
-    public float midNodeAlpha = 1f;
+    public float nodeAlphaMid = 1f;
 
     #endregion Midground Nodes
 
@@ -73,7 +73,7 @@ public class NodeSpawner : MonoBehaviour
     [Header("Background Nodes Variables")]
 
     // Initial node amount spawned.
-    [Range(1, 250)]
+    [Range(0, 250)]
     public int initialNodeAmtBack = 100;
 
     // List of all gameobjects in scene in front layer.
@@ -81,29 +81,33 @@ public class NodeSpawner : MonoBehaviour
 
     // The Scale Of the nodes
     [Range(0, 2f)]
-    public float backNodeScale = .5f;
+    public float nodeScaleBack = .5f;
 
     // Control the transparency of nodes.
     [Range(0, 1f)]
-    public float backNodeAlpha = 1f;
+    public float nodeAlphaBack = 1f;
 
     #endregion Background Nodes
 
     #endregion
 
-
     #region Unity Methods
 
     void Start()
     {
-        InstantiateNodes(initialNodeAmtFront, nodesFront, frontNodeScale, frontNodeAlpha, NodeLayer[0]);
-        InstantiateNodes(initialNodeAmtMid, nodesMid, midNodeScale, midNodeAlpha, NodeLayer[1]);
-        InstantiateNodes(initialNodeAmtBack, nodesBack, backNodeScale, backNodeAlpha, NodeLayer[2]);
+        SpawnNodes();
     }
 
     #endregion
 
     #region Methods
+
+    private void SpawnNodes()
+    {
+        InstantiateNodes(initialNodeAmtFront, nodesFront, nodeScaleFront, nodeAlphaFront, NodeLayer[0]);
+        InstantiateNodes(initialNodeAmtMid, nodesMid, nodeScaleMid, nodeAlphaMid, NodeLayer[1]);
+        InstantiateNodes(initialNodeAmtBack, nodesBack, nodeScaleBack, nodeAlphaBack, NodeLayer[2]);
+    }
 
     /// <summary>
     /// Instantiates a node at a certain position on screen.
@@ -111,6 +115,11 @@ public class NodeSpawner : MonoBehaviour
     /// <param name="amount">The amount of nodes to spawn.</param>
     private void InstantiateNodes(int amount, List<GameObject> nodes, float scale, float alpha, string layer)
     {
+        if(amount < 0)
+        {
+            //return;
+        }
+
         for (int i = 0; i < amount; i++)
         {
             // Instantiate node with scale and name.

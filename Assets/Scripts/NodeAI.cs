@@ -37,14 +37,10 @@ public class NodeAI : LineManager
         RandomizeVelocityY();
     }
 
-    void Update()
-    {
-        MoveNode();
-    }
-
     private void LateUpdate()
     {
         UpdateLines(nodeColor.a);
+        MoveNode();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

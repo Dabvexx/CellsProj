@@ -87,7 +87,7 @@ public class NodeArea : MonoBehaviour
             case 4:
                 // West spawning
                 node.transform.position = new Vector2(-ScreenBounds.windowWidth * .5f - 1f, RandomizePositionY());
-                nodeScript.RandomizeVelocityX();
+                nodeScript.RandomizeVelocityY();
 
                 if (Mathf.Sign(nodeScript.velocityX) == -1)
                 {
